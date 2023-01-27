@@ -29,12 +29,7 @@ function get_logs($file)
 //Fake time is for testing purposes
 function log_student($file, $fake_time = false)
 {
-    if ($fake_time) {
-        $time_of_arival = $fake_time;
-    } else {
-        $time_of_arival = get_current_time();
-    }
-
+    $time_of_arival = $fake_time ? $fake_time : get_current_time();
     $date = strtotime($time_of_arival);
     $hour = date('H', $date);
 
@@ -49,10 +44,10 @@ function log_student($file, $fake_time = false)
 //Main part
 $file = 'log.txt';
 
-//Log real time student arival
-log_student($file);
-
 //Log fake student arival
 log_student($file, '2023-01-27 7:51:32');
+
+//Log real time student arival
+log_student($file);
 
 get_logs($file);
